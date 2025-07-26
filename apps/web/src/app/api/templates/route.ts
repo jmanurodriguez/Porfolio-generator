@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient, SectionType } from '@prisma/client';
-import { auth } from '../../lib/auth';
+import { PrismaClient } from '@prisma/client';
+import { auth } from '../../../lib/auth';
 
 const prisma = new PrismaClient();
 
@@ -10,8 +10,8 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const typeParam = searchParams.get('type');
   let where = {} as any;
-  if (typeParam && (SectionType as any)[typeParam]) {
-    where = { type: typeParam as SectionType };
+  if (typeParam) {
+    where = { type: typeParam };
   }
   const templates = await prisma.template.findMany({ where });
   return NextResponse.json(templates);
