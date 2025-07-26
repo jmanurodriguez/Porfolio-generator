@@ -1,0 +1,89 @@
+// Prisma schema for the portfolio generator
+// Run `npx prisma migrate dev` to generate migrations
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  name      String?
+  role      Role      @default(USER)
+  portfolios Portfolio[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Portfolio {
+  id        String    @id @default(uuid())
+  title     String
+  slug      String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  sections  Section[]
+  themeId   String?
+  theme     Theme?    @relation(fields: [themeId], references: [id])
+  published Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Section {
+  id          String       @id @default(uuid())
+  portfolioId String
+  portfolio   Portfolio    @relation(fields: [portfolioId], references: [id])
+  type        SectionType
+  order       Int
+  data        Json
+  templateId  String?
+  template    Template?    @relation(fields: [templateId], references: [id])
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Template {
+  id        String       @id @default(uuid())
+  name      String
+  type      SectionType
+  code      String       // Could store JSX/TSX or HTML snippet
+  preview   String?      // URL to preview image or snapshot
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  sections  Section[]
+}
+
+model Theme {
+  id        String    @id @default(uuid())
+  name      String
+  colors    Json      // Store color palette
+  fonts     Json      // Store font families and sizes
+  radius    Int?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  portfolios Portfolio[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SectionType {
+  NAVBAR
+  HEADER
+  HERO
+  CARDS
+  GALLERY
+  FORM
+  TECHNOLOGIES
+  CERTIFICATIONS
+  EXPERIENCE
+  FOOTER
+}

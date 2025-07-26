@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-generator",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Monorepo for a customizable portfolio generator with Next.js full‑stack, Vite playground and shared packages.",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^1.12.3",
+    "typescript": "^5.0.4"
+  }
+}
