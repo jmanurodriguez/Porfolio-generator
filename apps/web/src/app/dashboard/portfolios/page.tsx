@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { auth } from '../../lib/auth';
+import { Suspense } from 'react';
+import { auth } from '../../../lib/auth';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
