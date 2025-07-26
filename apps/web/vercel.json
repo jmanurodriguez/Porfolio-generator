@@ -1,8 +1,9 @@
 {
   "framework": "nextjs",
   "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": ".next",
+  "ignoreCommand": "git diff --quiet ../../HEAD~1 HEAD -- . ../.. ':!../../apps/builder'",
   "env": {
     "NEXTAUTH_URL": "https://your-app-name.vercel.app"
   }
