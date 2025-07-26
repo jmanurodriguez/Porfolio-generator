@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate --schema=../../prisma/schema.prisma && next build",
-    "vercel-build": "prisma generate --schema=../../prisma/schema.prisma && next build",
+    "build": "next build",
+    "vercel-build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate --schema=../../prisma/schema.prisma"
+    "lint": "next lint"
   },
   "dependencies": {
     "@prisma/client": "^6.12.0",
