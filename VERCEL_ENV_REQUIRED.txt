@@ -1,0 +1,24 @@
+# Variables de entorno OBLIGATORIAS para Vercel
+# Configura estas en Vercel Dashboard > Settings > Environment Variables
+
+# 1. NEXTAUTH_SECRET (OBLIGATORIO)
+NEXTAUTH_SECRET=sXDTqkegA7PBdFm9fWneOM1prVEIlML2JlBt3zHiHEo=
+
+# 2. NEXTAUTH_URL (OBLIGATORIO - cambiar por tu URL de Vercel)
+NEXTAUTH_URL=https://tu-app.vercel.app
+
+# 3. DATABASE_URL (OBLIGATORIO - necesitas una base de datos externa)
+# ✅ CONFIGURADO - Tu base de datos Neon
+DATABASE_URL=postgresql://neondb_owner:npg_C52vPKsdUIWO@ep-dark-shadow-acjo1lbd-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+# 4. Variables S3 (para subida de archivos)
+S3_ENDPOINT=https://your-bucket.s3.amazonaws.com
+S3_ACCESS_KEY=your_access_key
+S3_SECRET_KEY=your_secret_key
+S3_BUCKET_NAME=your-bucket
+
+# 5. Variables SMTP (para correos)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
