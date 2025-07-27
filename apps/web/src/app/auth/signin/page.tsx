@@ -1,17 +1,27 @@
 /* Simple sign‑in page for NextAuth credentials */
 "use client";
-import { signIn } from 'next-auth/react';
+// import { signIn } from 'next-auth/react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await signIn('credentials', { email, password, callbackUrl: '/' });
-    setLoading(false);
+    
+    // TODO: Re-enable real authentication
+    // await signIn('credentials', { email, password, callbackUrl: '/' });
+    
+    // For now, just simulate login and redirect to dashboard
+    setTimeout(() => {
+      setLoading(false);
+      router.push('/dashboard');
+    }, 1000);
   };
   return (
     <main className="flex min-h-screen items-center justify-center">

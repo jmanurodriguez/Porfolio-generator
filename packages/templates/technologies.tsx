@@ -133,9 +133,16 @@ const ProgressBarTech: React.FC<any> = ({ data, config = {} }) => {
 const CloudTech: React.FC<any> = ({ data, config = {} }) => {
   const technologies = data?.technologies || [];
   
-  const getRandomSize = () => {
+  const getDeterministicSize = (techName: string, index: number) => {
     const sizes = ['text-sm', 'text-base', 'text-lg', 'text-xl', 'text-2xl', 'text-3xl'];
-    return sizes[Math.floor(Math.random() * sizes.length)];
+    // Simple hash based on techName and index
+    let hash = 0;
+    const str = techName + index;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const sizeIndex = Math.abs(hash) % sizes.length;
+    return sizes[sizeIndex];
   };
   
   return (
@@ -150,11 +157,12 @@ const CloudTech: React.FC<any> = ({ data, config = {} }) => {
           </p>
         )}
       </div>
-      <div className="bg-gray-50 rounded-lg p-8 min-h-64 flex flex-wrap items-center justify-center gap-6">
+      
+      <div className="flex flex-wrap justify-center gap-4">
         {technologies.map((tech: any, index: number) => (
           <span 
             key={index}
-            className={`inline-block px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-105 ${getRandomSize()}`}
+            className={`inline-block px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-105 ${getDeterministicSize(tech.name, index)}`}
             style={{ 
               color: tech.color || '#6B7280',
               fontWeight: tech.level ? Math.min(600, 300 + (tech.level * 3)) : 400

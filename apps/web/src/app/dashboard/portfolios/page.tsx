@@ -15,12 +15,13 @@ type Portfolio = {
 };
 
 export default async function PortfoliosPage() {
-  // TODO: Re-enable authentication and database when properly configured
+  // TODO: Re-enable authentication for production
   // const session = await auth();
   // if (!session) {
   //   return <p className="p-4">Debes iniciar sesión para ver tus portfolios.</p>;
   // }
   const session = { user: { id: '1', name: 'Demo User' } };
+  
   // TODO: Re-enable database queries when Prisma is configured
   // const portfolios = await prisma.portfolio.findMany({
   //   where: { userId: session.user.id },
