@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { auth } from '../../../lib/auth';
-import { PrismaClient } from '@prisma/client';
+// import { auth } from '../../../lib/auth';
+// import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 type Portfolio = {
   id: string;
@@ -15,14 +15,37 @@ type Portfolio = {
 };
 
 export default async function PortfoliosPage() {
-  const session = await auth();
-  if (!session) {
-    return <p className="p-4">Debes iniciar sesión para ver tus portfolios.</p>;
-  }
-  const portfolios = await prisma.portfolio.findMany({
-    where: { userId: session.user.id },
-    orderBy: { createdAt: 'desc' },
-  });
+  // TODO: Re-enable authentication and database when properly configured
+  // const session = await auth();
+  // if (!session) {
+  //   return <p className="p-4">Debes iniciar sesión para ver tus portfolios.</p>;
+  // }
+  const session = { user: { id: '1', name: 'Demo User' } };
+  // TODO: Re-enable database queries when Prisma is configured
+  // const portfolios = await prisma.portfolio.findMany({
+  //   where: { userId: session.user.id },
+  //   orderBy: { createdAt: 'desc' },
+  // });
+  
+  // Mock data for demonstration
+  const portfolios: Portfolio[] = [
+    {
+      id: '1',
+      title: 'Mi Portfolio Personal',
+      slug: 'mi-portfolio-personal',
+      published: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      id: '2',
+      title: 'Portfolio de Proyectos',
+      slug: 'portfolio-de-proyectos',
+      published: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+  ];
   return (
     <div className="p-8 space-y-4">
       <h1 className="text-2xl font-bold">Mis Portfolios</h1>

@@ -4,12 +4,11 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["^dev"],
-      "outputs": []
+      "dependsOn": ["^dev"]
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", ".next/**", "build/**"]
     },
     "lint": {
       "outputs": []

@@ -5,6 +5,10 @@ const nextConfig = {
     domains: ['localhost'],
   },
   output: 'standalone',
+  transpilePackages: ['@portfolio/templates', '@portfolio/ui', '@portfolio/types'],
+  experimental: {
+    externalDir: true,
+  },
 };
 
 export default nextConfig;
