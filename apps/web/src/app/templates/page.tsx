@@ -43,7 +43,7 @@ export default function TemplatesGallery() {
               <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">
                 Dashboard
               </Link>
-              <Link href="/auth/signin" className="bg-blue-600 text-white px-4 py-2 rounded-lg">
+              <Link href="/dashboard" className="bg-blue-600 text-white px-4 py-2 rounded-lg">
                 Get Started
               </Link>
             </nav>

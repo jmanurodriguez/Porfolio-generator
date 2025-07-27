@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-export default function Dashboard() {
+export default function TestDashboard() {
   return (
     <div className="p-8 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-4xl font-bold text-gray-900">Panel de control</h1>
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm px-4 py-2 rounded-full font-medium">
-          ✨ Dashboard Activo
+        <h1 className="text-4xl font-bold text-gray-900">Panel de control (Test)</h1>
+        <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white text-sm px-4 py-2 rounded-full font-medium">
+          ✅ Sin Autenticación Requerida
         </div>
       </div>
       
@@ -40,31 +40,13 @@ export default function Dashboard() {
             </div>
           </div>
         </Link>
-        
-        <Link 
-          href="/dashboard/portfolios/new"
-          className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow border border-gray-100"
-        >
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              ➕
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">Crear Portfolio</h3>
-              <p className="text-sm text-gray-600">Crea un nuevo portfolio</p>
-            </div>
-          </div>
-        </Link>
       </div>
       
-      <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Estado del Sistema</h2>
-        <div className="space-y-2">
-          <p className="text-green-600">✅ Dashboard funcionando correctamente</p>
-          <p className="text-green-600">✅ Sin autenticación requerida</p>
-          <p className="text-green-600">✅ Todas las rutas accesibles</p>
-          <p className="text-blue-600">🔄 Base de datos en modo mock</p>
-        </div>
+      <div className="text-center py-8">
+        <p className="text-green-600 font-medium">✅ Dashboard funcionando sin autenticación</p>
+        <p className="text-sm text-gray-500 mt-2">
+          Este es un dashboard de prueba para verificar que funciona sin login
+        </p>
       </div>
     </div>
   );

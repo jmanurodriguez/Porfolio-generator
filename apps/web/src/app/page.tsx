@@ -19,7 +19,7 @@ export default function HomePage() {
                 Dashboard
               </Link>
               <Link 
-                href="/auth/signin" 
+                href="/dashboard" 
                 className="bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
               >
                 Get Started
