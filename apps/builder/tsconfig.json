@@ -7,8 +7,17 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@packages/*": ["../../packages/*"]
+    }
   },
   "include": ["src"],
+  "references": [
+    { "path": "../../packages/types" }
+  ],
   "exclude": ["node_modules"]
 }

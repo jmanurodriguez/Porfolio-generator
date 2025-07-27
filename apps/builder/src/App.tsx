@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SectionType } from '../../../packages/types';
+import { SectionType } from '@packages/types';
 
 const sections = Object.values(SectionType);
 
