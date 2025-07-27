@@ -5,6 +5,15 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+type Portfolio = {
+  id: string;
+  title: string;
+  slug: string;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 export default async function PortfoliosPage() {
   const session = await auth();
   if (!session) {
@@ -21,7 +30,7 @@ export default async function PortfoliosPage() {
         Crear nuevo
       </Link>
       <ul className="space-y-2">
-        {portfolios.map((p) => (
+        {portfolios.map((p: Portfolio) => (
           <li key={p.id} className="border p-3 rounded">
             <div className="flex justify-between items-center">
               <span>{p.title}</span>
