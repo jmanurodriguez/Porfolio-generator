@@ -1,199 +1,286 @@
-import React from 'react';
+// Export all template components
+export * from './navbars';
+export * from './heroes';
+export * from './cards';
+
+// Template registry for dynamic loading
+import { SectionType, TemplateDefinition } from '@packages/types';
 
 // Navbars
-export function NavbarTemplate1() {
-  return (
-    <nav className="flex items-center justify-between p-4 bg-gray-800 text-white">
-      <span className="font-bold">Mi Sitio</span>
-      <ul className="flex space-x-4">
-        <li>Inicio</li>
-        <li>Proyectos</li>
-        <li>Contacto</li>
-      </ul>
-    </nav>
-  );
-}
-export function NavbarTemplate2() {
-  return (
-    <nav className="p-4 bg-white shadow flex justify-between items-center">
-      <span className="text-xl font-semibold">Portfolio</span>
-      <button className="bg-indigo-600 text-white px-3 py-1 rounded">Contacto</button>
-    </nav>
-  );
-}
-export function NavbarTemplate3() {
-  return (
-    <nav className="p-6 bg-gradient-to-r from-purple-600 to-blue-500 text-white flex justify-center">
-      <span className="text-2xl font-bold">Mi Portfolio</span>
-    </nav>
-  );
-}
-export function NavbarTemplate4() {
-  return (
-    <nav className="p-4 bg-gray-900 text-gray-300 flex flex-col md:flex-row md:justify-between">
-      <span className="font-bold">Portfolio</span>
-      <ul className="flex space-x-2 mt-2 md:mt-0">
-        <li>Sobre mí</li>
-        <li>Experiencia</li>
-        <li>Certificaciones</li>
-      </ul>
-    </nav>
-  );
-}
-export function NavbarTemplate5() {
-  return (
-    <nav className="p-4 bg-white border-b flex items-center justify-between">
-      <span className="text-lg font-semibold">Portafolio</span>
-      <div>
-        <a href="#" className="mr-4">Blog</a>
-        <a href="#" className="bg-indigo-600 text-white px-3 py-1 rounded">Hire me</a>
-      </div>
-    </nav>
-  );
+import { 
+  NavbarModernDark, 
+  NavbarCleanLight, 
+  NavbarGradient, 
+  NavbarMinimalist, 
+  NavbarMobileFirst 
+} from './navbars';
+
+// Heroes
+import { 
+  HeroCenterAligned, 
+  HeroSplitLayout, 
+  HeroMinimalDark, 
+  HeroCreativeAsymmetric, 
+  HeroVideoBackground 
+} from './heroes';
+
+// Cards
+import { 
+  CardsGridLayout, 
+  CardsMasonryLayout, 
+  CardsHorizontalScroll, 
+  CardsMinimal, 
+  CardsFeatured 
+} from './cards';
+
+export const TEMPLATE_REGISTRY: TemplateDefinition[] = [
+  // Navbar Templates
+  {
+    id: 'navbar-modern-dark',
+    name: 'Modern Dark',
+    type: SectionType.NAVBAR,
+    description: 'Clean navigation with dark theme',
+    preview: '/templates/navbar-modern-dark.jpg',
+    defaultContent: {
+      logo: 'Portfolio',
+      items: ['Home', 'Projects', 'About', 'Contact']
+    },
+    component: NavbarModernDark
+  },
+  {
+    id: 'navbar-clean-light',
+    name: 'Clean Light',
+    type: SectionType.NAVBAR,
+    description: 'Minimalist light navigation',
+    preview: '/templates/navbar-clean-light.jpg',
+    defaultContent: {
+      logo: 'Portfolio',
+      items: ['Home', 'Projects', 'About', 'Contact']
+    },
+    component: NavbarCleanLight
+  },
+  {
+    id: 'navbar-gradient',
+    name: 'Gradient',
+    type: SectionType.NAVBAR,
+    description: 'Colorful gradient navigation',
+    preview: '/templates/navbar-gradient.jpg',
+    defaultContent: {
+      logo: 'Portfolio',
+      items: ['Home', 'Projects', 'About', 'Contact']
+    },
+    component: NavbarGradient
+  },
+  {
+    id: 'navbar-minimalist',
+    name: 'Minimalist',
+    type: SectionType.NAVBAR,
+    description: 'Ultra minimal navigation',
+    preview: '/templates/navbar-minimalist.jpg',
+    defaultContent: {
+      logo: 'Portfolio',
+      items: ['Home', 'Projects', 'About', 'Contact']
+    },
+    component: NavbarMinimalist
+  },
+  {
+    id: 'navbar-mobile-first',
+    name: 'Mobile First',
+    type: SectionType.NAVBAR,
+    description: 'Responsive mobile-first navigation',
+    preview: '/templates/navbar-mobile-first.jpg',
+    defaultContent: {
+      logo: 'Portfolio',
+      items: ['Home', 'Projects', 'About', 'Contact']
+    },
+    component: NavbarMobileFirst
+  },
+
+  // Hero Templates
+  {
+    id: 'hero-center-aligned',
+    name: 'Center Aligned',
+    type: SectionType.HERO,
+    description: 'Classic centered hero section',
+    preview: '/templates/hero-center-aligned.jpg',
+    defaultContent: {
+      title: 'John Doe',
+      subtitle: 'Full Stack Developer',
+      description: 'I create beautiful and functional web applications using modern technologies.',
+      ctaText: 'Get In Touch',
+      image: '/placeholder-avatar.jpg'
+    },
+    component: HeroCenterAligned
+  },
+  {
+    id: 'hero-split-layout',
+    name: 'Split Layout',
+    type: SectionType.HERO,
+    description: 'Two-column hero with image',
+    preview: '/templates/hero-split-layout.jpg',
+    defaultContent: {
+      title: 'John Doe',
+      subtitle: 'Full Stack Developer',
+      description: 'I create beautiful and functional web applications using modern technologies.',
+      ctaText: 'View My Work',
+      secondaryCtaText: 'Download CV',
+      image: '/placeholder-avatar.jpg'
+    },
+    component: HeroSplitLayout
+  },
+  {
+    id: 'hero-minimal-dark',
+    name: 'Minimal Dark',
+    type: SectionType.HERO,
+    description: 'Dark minimal hero section',
+    preview: '/templates/hero-minimal-dark.jpg',
+    defaultContent: {
+      title: 'John Doe',
+      subtitle: 'Full Stack Developer',
+      description: 'Building digital experiences that matter.',
+      ctaText: 'Let\'s Work Together'
+    },
+    component: HeroMinimalDark
+  },
+  {
+    id: 'hero-creative-asymmetric',
+    name: 'Creative Asymmetric',
+    type: SectionType.HERO,
+    description: 'Creative asymmetric layout',
+    preview: '/templates/hero-creative-asymmetric.jpg',
+    defaultContent: {
+      title: 'John Doe',
+      subtitle: 'Creative Developer',
+      description: 'Turning ideas into reality through code and design.',
+      ctaText: 'Explore My Work',
+      skills: ['React', 'Node.js', 'TypeScript', 'Design']
+    },
+    component: HeroCreativeAsymmetric
+  },
+  {
+    id: 'hero-video-background',
+    name: 'Video Background',
+    type: SectionType.HERO,
+    description: 'Hero with video background',
+    preview: '/templates/hero-video-background.jpg',
+    defaultContent: {
+      title: 'John Doe',
+      subtitle: 'Digital Creator',
+      description: 'Crafting exceptional digital experiences.',
+      ctaText: 'Watch My Story',
+      videoUrl: '/placeholder-video.mp4'
+    },
+    component: HeroVideoBackground
+  },
+
+  // Cards Templates
+  {
+    id: 'cards-grid-layout',
+    name: 'Grid Layout',
+    type: SectionType.CARDS,
+    description: 'Classic grid of project cards',
+    preview: '/templates/cards-grid-layout.jpg',
+    defaultContent: {
+      title: 'My Projects',
+      projects: [
+        {
+          id: 1,
+          title: 'E-commerce Platform',
+          description: 'A full-stack e-commerce solution built with React and Node.js',
+          image: '/placeholder-project.jpg',
+          technologies: ['React', 'Node.js', 'MongoDB'],
+          link: '#'
+        }
+      ]
+    },
+    component: CardsGridLayout
+  },
+  {
+    id: 'cards-masonry-layout',
+    name: 'Masonry Layout',
+    type: SectionType.CARDS,
+    description: 'Pinterest-style masonry layout',
+    preview: '/templates/cards-masonry-layout.jpg',
+    defaultContent: {
+      title: 'Featured Work',
+      projects: [
+        {
+          id: 1,
+          title: 'Mobile App Design',
+          category: 'UI/UX',
+          image: '/placeholder-project.jpg',
+          link: '#'
+        }
+      ]
+    },
+    component: CardsMasonryLayout
+  },
+  {
+    id: 'cards-horizontal-scroll',
+    name: 'Horizontal Scroll',
+    type: SectionType.CARDS,
+    description: 'Horizontally scrolling cards',
+    preview: '/templates/cards-horizontal-scroll.jpg',
+    defaultContent: {
+      title: 'Recent Projects',
+      projects: [
+        {
+          id: 1,
+          title: 'Project Alpha',
+          description: 'Description of project alpha',
+          image: '/placeholder-project.jpg',
+          status: 'Completed'
+        }
+      ]
+    },
+    component: CardsHorizontalScroll
+  },
+  {
+    id: 'cards-minimal',
+    name: 'Minimal',
+    type: SectionType.CARDS,
+    description: 'Clean minimal project list',
+    preview: '/templates/cards-minimal.jpg',
+    defaultContent: {
+      title: 'Portfolio',
+      projects: [
+        {
+          id: 1,
+          title: 'Project One',
+          year: '2024',
+          client: 'Client Name',
+          link: '#'
+        }
+      ]
+    },
+    component: CardsMinimal
+  },
+  {
+    id: 'cards-featured',
+    name: 'Featured Project',
+    type: SectionType.CARDS,
+    description: 'Showcase one main project',
+    preview: '/templates/cards-featured.jpg',
+    defaultContent: {
+      featuredProject: {
+        title: 'Featured Project',
+        description: 'This is my most recent and exciting project.',
+        image: '/placeholder-project.jpg',
+        technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+        liveUrl: '#',
+        githubUrl: '#'
+      },
+      otherProjects: []
+    },
+    component: CardsFeatured
+  }
+];
+
+// Helper functions
+export function getTemplatesByType(type: SectionType): TemplateDefinition[] {
+  return TEMPLATE_REGISTRY.filter(template => template.type === type);
 }
 
-// Header / Hero templates
-export function HeroTemplate1() {
-  return (
-    <section className="py-20 bg-indigo-600 text-white text-center">
-      <h1 className="text-4xl font-bold mb-4">Hola, soy Developer</h1>
-      <p className="max-w-xl mx-auto">Construyo sitios web hermosos y funcionales.</p>
-    </section>
-  );
-}
-export function HeroTemplate2() {
-  return (
-    <section className="py-32 bg-gray-800 text-white text-center">
-      <h1 className="text-5xl font-extrabold mb-2">Bienvenido</h1>
-      <p className="text-lg">Descubre mis proyectos y habilidades.</p>
-    </section>
-  );
-}
-export function HeroTemplate3() {
-  return (
-    <section className="py-24 bg-white text-gray-800 text-center">
-      <h1 className="text-4xl font-bold mb-3">Soy tu próximo aliado</h1>
-      <p className="text-gray-600 max-w-md mx-auto">Diseñador y desarrollador especializado en experiencias digitales.</p>
-    </section>
-  );
-}
-export function HeroTemplate4() {
-  return (
-    <section className="h-64 bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url('https://via.placeholder.com/1200x400')` }}>
-      <h1 className="text-4xl text-white font-bold drop-shadow-lg">Mi Portafolio</h1>
-    </section>
-  );
-}
-export function HeroTemplate5() {
-  return (
-    <section className="py-20 bg-gradient-to-r from-blue-500 to-teal-400 text-center text-white">
-      <h1 className="text-5xl font-bold">Conoce mi trabajo</h1>
-      <p className="mt-4">Soluciones creativas y eficientes a tu alcance.</p>
-    </section>
-  );
-}
-
-// Cards (proyectos) templates
-export function CardsTemplate1() {
-  return (
-    <section className="py-12">
-      <h2 className="text-3xl font-bold text-center mb-8">Proyectos</h2>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="rounded-lg shadow p-4 bg-white">
-            <h3 className="text-xl font-semibold mb-2">Proyecto {i + 1}</h3>
-            <p className="text-gray-600">Descripción breve del proyecto {i + 1}.</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-export function CardsTemplate2() {
-  return (
-    <section className="py-12 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-6">Mis Trabajos</h2>
-      <div className="flex flex-wrap justify-center gap-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="w-64 bg-white rounded shadow p-3">
-            <h3 className="font-semibold">Proyecto {i + 1}</h3>
-            <span className="text-sm text-gray-500">React</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-export function CardsTemplate3() {
-  return (
-    <section className="py-16 bg-white">
-      <h2 className="text-3xl font-bold text-center mb-8">Últimos proyectos</h2>
-      <div className="space-y-4">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="border rounded p-4">
-            <h3 className="text-xl font-semibold">Proyecto {i + 1}</h3>
-            <p className="text-gray-600">Descripción y detalles del proyecto {i + 1}.</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-export function CardsTemplate4() {
-  return (
-    <section className="py-12 bg-gray-50">
-      <h2 className="text-3xl font-bold text-center mb-6">Portafolio</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {Array.from({ length: 2 }).map((_, i) => (
-          <div key={i} className="flex rounded shadow overflow-hidden">
-            <div className="w-1/3 bg-gray-200">&nbsp;</div>
-            <div className="w-2/3 p-4">
-              <h3 className="font-semibold">Proyecto {i + 1}</h3>
-              <p className="text-sm text-gray-600">Descripción breve del proyecto.</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-export function CardsTemplate5() {
-  return (
-    <section className="py-12 bg-white">
-      <h2 className="text-3xl font-bold text-center mb-6">Mis proyectos</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="border rounded p-3">
-            <h3 className="font-semibold">Proyecto {i + 1}</h3>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// Additional templates for gallery, forms, technologies, certifications, experience, footer would follow the same pattern
-// To keep this example concise, they have been omitted.
-
-// Utility to select a template based on type and index (1‑based)
-export function getTemplateComponent(type: string, index: number): React.FC | null {
-  const key = `${type.toUpperCase()}${index}`;
-  const map: Record<string, React.FC> = {
-    NAVBAR1: NavbarTemplate1,
-    NAVBAR2: NavbarTemplate2,
-    NAVBAR3: NavbarTemplate3,
-    NAVBAR4: NavbarTemplate4,
-    NAVBAR5: NavbarTemplate5,
-    HERO1: HeroTemplate1,
-    HERO2: HeroTemplate2,
-    HERO3: HeroTemplate3,
-    HERO4: HeroTemplate4,
-    HERO5: HeroTemplate5,
-    CARDS1: CardsTemplate1,
-    CARDS2: CardsTemplate2,
-    CARDS3: CardsTemplate3,
-    CARDS4: CardsTemplate4,
-    CARDS5: CardsTemplate5,
-  };
-  return map[key] || null;
+export function getTemplateById(id: string): TemplateDefinition | undefined {
+  return TEMPLATE_REGISTRY.find(template => template.id === id);
 }
